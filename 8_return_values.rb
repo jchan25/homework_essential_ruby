@@ -43,11 +43,14 @@ end
 #  - then we divide the sum by the number of elements in the set
 
 def mean(list_of_numbers)
-  # Let's re-use the work we did above in the sum method
+  running_total = 0
+  list_of_numbers.each do |number|
+    running_total = running_total + number
+  end
 
-  # ====================
-  # Your code goes here.
-  # ====================
+  return running_total.to_f/list_of_numbers.length.to_f
+
+
 end
 
 # VARIANCE
@@ -60,11 +63,18 @@ end
 #  - the variance is the mean of the squared differences
 
 def variance(list_of_numbers)
-  # Let's re-use the work we did above in the mean method
 
-  # ====================
-  # Your code goes here.
-  # ====================
+ the_mean= mean(list_of_numbers)
+
+ running_total=0
+ list_of_numbers.each do |num|
+ difference = num - the_mean
+ squared_diff = difference * difference
+ running_total = running_total + squared_diff
+ end
+
+    return running_total.to_f / list_of_numbers.length
+
 end
 
 # STANDARD DEVIATION
@@ -73,18 +83,18 @@ end
 #  - take the square root of the variance
 
 def standard_deviation(list_of_numbers)
-  # ====================
-  # Your code goes here.
-  # ====================
-end
+  the_variance = variance (list_of_numbers)
+  stdev = the_variance**(0.5)
+   return stdev
 
+end
 
 # Finally, everything above allows us to do:
 
-# first_dataset = [93, 65, 87, 68, 2, 64, 36, 96, 45, 47]
-# stdev1 = standard_deviation(first_dataset)
-# puts "The standard deviation of the first dataset is #{stdev1.round(2)}."
+first_dataset = [93, 65, 87, 68, 2, 64, 36, 96, 45, 47]
+stdev1 = standard_deviation(first_dataset)
+puts "The standard deviation of the first dataset is #{stdev1.round(2)}."
 
-# second_dataset = [2, 9, 405, 562, 740, 133, 346, 509, 21, 93]
-# stdev2 = standard_deviation(second_dataset)
-# puts "The standard deviation of the second dataset is #{stdev2.round(2)}."
+second_dataset = [2, 9, 405, 562, 740, 133, 346, 509, 21, 93]
+stdev2 = standard_deviation(second_dataset)
+puts "The standard deviation of the second dataset is #{stdev2.round(2)}."

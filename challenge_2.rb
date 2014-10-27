@@ -22,6 +22,7 @@ loan_quotes = [
 number_of_monthly_payments = 30 * 12
 principal_amount = 200000.0
 
+
 # Now, loop through the array of loan quotes using .each:
 #   For each option, tell the user how much the monthly payment will be to
 #     that bank. E.g.,
@@ -31,6 +32,17 @@ principal_amount = 200000.0
 #     Line 1 of this file.
 
 # ==============================================================
+
+monthly_rate=0
+payment=0
+loan_quotes.each do |quotes|
+    monthly_rate=quotes["annual_rate"]/12
+    payment=pmt(monthly_rate,number_of_monthly_payments,principal_amount)
+    puts "The monthly payment from #{quotes["bank"]} will be $#{payment.round(2)}"
+end
+
+
+
 # Your code goes here.
 # You shouldn't have to write code or change code anywhere else.
 
