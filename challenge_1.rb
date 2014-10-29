@@ -15,12 +15,8 @@
 
 def pmt(rate, nper, pv)
   payment = (rate*pv) / ((1-(1+rate)**(-nper)))
-  #return numerator
   return payment
-  # =========================================================
-  # Your code to implement the method goes here.
-  # You shouldn't have to write or change code anywhere else.
-  # =========================================================
+
 end
 
 
